@@ -9,10 +9,10 @@ function TarjetaDePelicula() {
 
     useEffect(() => {
         axios.get(`http://localhost:3000/peliculas/${id}`)
-            .then(response =>{
+            .then(response => {
                 console.log(response.data);
                 setPelicula(response.data)
-            } )
+            })
             .catch(error => console.error('error al obtener la pelicula:', error));
     }, [id]);
 
@@ -21,13 +21,16 @@ function TarjetaDePelicula() {
         <div className='tarjeta-pelicula-detalle'>
             <img></img>
             <h2>{pelicula.titulo}</h2>
-            <p><strong>Genero: </strong>{pelicula.generos.map(genero => genero.nombre).join(', ')}</p>
-            <p><strong>Director: </strong>{pelicula.directores.map(director => director.nombre).join(', ')}</p>
             <p><strong>Descripcion: </strong>{pelicula.descripcion}</p>
             <p><strong>Duracion: </strong>{pelicula.duracion}</p>
             <p><strong>Estreno: </strong>{pelicula.estreno}</p>
+            <p><strong>Genero: </strong>{pelicula.generos.map(genero => genero.nombre).join(', ')}</p>
+            <p><strong>Director: </strong>{pelicula.directores.map(director => director.nombre).join(', ')}</p>
+
+
 
         </div>
+
     )
 }
 export default TarjetaDePelicula;
